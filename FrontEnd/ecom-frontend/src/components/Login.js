@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -16,14 +17,32 @@ function Login() {
     setPassword(e.target.value)
   }
 
+  const navigate = useNavigate()
   const handleApi = () => {
     axios
       .post('http://localhost:8080/user/signin', {
         email: email,
         password: password,
       })
-      .then((result) => {
-        console.log(result)
+      .then((res) => {
+        console.log(res.data)
+        if (res.data.token === '1c2cba40-688b-4926-a2d2-dbd4abb97823') {
+          console.log('Redirect to admin')
+
+          //saving token in session
+          sessionStorage.setItem(
+            'token',
+            '1c2cba40-688b-4926-a2d2-dbd4abb97823',
+          )
+          navigate('/admin')
+          //reading token from session
+          let token = sessionStorage.getItem('token')
+          console.log(token)
+        } else {
+          console.log('Redirect to user')
+          sessionStorage.setItem('token', res.data.token)
+          navigate('/')
+        }
       })
       .catch((error) => {
         console.log(error)

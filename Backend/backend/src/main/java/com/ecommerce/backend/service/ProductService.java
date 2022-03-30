@@ -49,6 +49,7 @@ public class ProductService {
         return productDtos;
     }
 	
+	
 	public void updateProduct(ProductDto productDto, Integer productId) throws Exception {
         Optional<Product> optionalProduct = productRepository.findById(productId);
         // throw an exception if product does not exists

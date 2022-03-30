@@ -28,8 +28,8 @@ function Signup() {
   const handleApi = () => {
     axios
       .post('http://localhost:8080/user/signup', {
-        firstname: firstname,
-        lastname: lastname,
+        firstName: firstname,
+        lastName: lastname,
         email: email,
         password: password,
       })
