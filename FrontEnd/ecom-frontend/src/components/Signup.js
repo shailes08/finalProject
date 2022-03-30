@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
   const [firstname, setfirstName] = useState('')
@@ -40,7 +41,7 @@ function Signup() {
         console.log(error)
       })
   }
-
+  const navigate = useNavigate()
   return (
     <div>
       First Name:{' '}
@@ -56,6 +57,8 @@ function Signup() {
       <input value={password} onChange={handlePassword} type="password" />
       <br></br>
       <button onClick={handleApi}>Register</button>
+      <p> Already Register</p>
+      <button onClick={() => navigate('/login')}>Login</button>
     </div>
   )
 }

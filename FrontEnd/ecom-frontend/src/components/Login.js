@@ -38,10 +38,14 @@ function Login() {
           //reading token from session
           let token = sessionStorage.getItem('token')
           console.log(token)
-        } else {
+        } else if (res.data.token.length > 5) {
           console.log('Redirect to user')
           sessionStorage.setItem('token', res.data.token)
           navigate('/')
+        } else {
+          alert('Wrong Credentials')
+          console.log('wrong credentials')
+          navigate('/login')
         }
       })
       .catch((error) => {
@@ -58,6 +62,7 @@ function Login() {
       <input value={password} onChange={handlePassword} type="password" />
       <br></br>
       <button onClick={handleApi}>Login</button>
+      <button onClick={() => navigate('/signup')}>Sign Up</button>
     </div>
   )
 }
