@@ -11,6 +11,8 @@ import Address from './components/Address'
 import Addmin from './components/Addmin'
 import AdminCategory from './components/AdminCategory'
 import AdminProducts from './components/AdminProducts'
+import CreateCategory from './components/CreateCategory'
+import CreateProducts from './components/CreateProducts'
 import Nomatch from './components/Nomatch'
 
 function App() {
@@ -25,6 +27,14 @@ function App() {
       <Route path="cart" element={<CartList />}></Route>
       <Route path="address" element={<Address />}></Route>
       <Route path="payment" element={<Payment />}></Route>
+      <Route
+        path="/admin/products/addcategory"
+        element={<CreateCategory />}
+      ></Route>
+      <Route
+        path="/admin/products/addproducts/:id"
+        element={<CreateProducts />}
+      ></Route>
       <Route path="*" element={<Nomatch />}></Route>
     </Routes>
   )

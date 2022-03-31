@@ -26,6 +26,7 @@ function Signup() {
     setPassword(e.target.value)
   }
 
+  const navigate = useNavigate()
   const handleApi = () => {
     axios
       .post('http://localhost:8080/user/signup', {
@@ -36,18 +37,19 @@ function Signup() {
       })
       .then((result) => {
         console.log(result)
+        navigate('/login')
       })
       .catch((error) => {
         console.log(error)
       })
   }
-  const navigate = useNavigate()
+
   return (
     <div>
-      First Name:{' '}
+      First Name:
       <input value={firstname} onChange={handleFirstName} type="text" />
       <br></br>
-      Last Name:{' '}
+      Last Name:
       <input value={lastname} onChange={handleLastName} type="text" />
       <br></br>
       Email Id:

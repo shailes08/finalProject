@@ -5,7 +5,9 @@ function AdminCategory() {
   const navigate = useNavigate()
   return (
     <>
-      <CartList></CartList>
+      <button onClick={() => navigate('/admin/products/addcategory')}>
+        Create Category
+      </button>
       <button onClick={() => navigate(-1)}>Go back</button>
     </>
   )
