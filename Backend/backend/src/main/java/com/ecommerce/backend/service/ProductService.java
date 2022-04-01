@@ -38,6 +38,8 @@ public class ProductService {
 	        productDto.setId(product.getId());
 	        return productDto;
 	    }
+	 
+	
 	
 	public List<ProductDto> getAllProducts() {
         List<Product> allProducts = productRepository.findAll();
@@ -48,6 +50,16 @@ public class ProductService {
         }
         return productDtos;
     }
+	
+	public List<ProductDto> getAllProductById(Integer id) {
+		List<Product> allProducts = productRepository.findAllById(id);
+		// TODO Auto-generated method stub
+		List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product: allProducts) {
+            productDtos.add(getProductDto(product));
+        }
+        return productDtos;
+	}
 	
 	
 	public void updateProduct(ProductDto productDto, Integer productId) throws Exception {
@@ -71,6 +83,10 @@ public class ProductService {
 	        }
 	        return optionalProduct.get();
 	    }
+
+
+
+	
 	
 	
 }

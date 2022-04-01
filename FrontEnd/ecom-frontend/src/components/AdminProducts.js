@@ -34,7 +34,9 @@ function AdminProducts() {
           </div>
         ))}
       </div>
-
+      <button onClick={() => navigate('/admin/product/productlist')}>
+        Update Product
+      </button>
       <button onClick={() => navigate(-1)}>Go back</button>
     </>
   )

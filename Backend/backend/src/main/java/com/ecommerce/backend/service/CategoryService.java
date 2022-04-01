@@ -1,6 +1,7 @@
 package com.ecommerce.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -35,6 +36,11 @@ public class CategoryService {
 	
 	public boolean findById(int categoryId) {
 		return categoryRepo.findById(categoryId).isPresent();
+	}
+
+	public Optional<Category> getCategoryById(Integer id) {
+		// TODO Auto-generated method stub
+		return categoryRepo.findById(id);
 	}
 
 }

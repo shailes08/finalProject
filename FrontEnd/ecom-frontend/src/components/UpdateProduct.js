@@ -3,17 +3,34 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function CreateProducts() {
+function UpdateProduct() {
   const navigate = useNavigate()
   const params = useParams()
   const id = params.id
-
   const [productname, setProductName] = useState('')
   const [imageurl, setImageUrl] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
+  const [categoryId, setCategoryId] = useState('')
 
   console.log({ productname, imageurl, price, description })
+
+  useEffect(() => {
+    getProductDetails()
+  }, [])
+
+  const getProductDetails = async () => {
+    console.log(id)
+    let result = await fetch(`http://localhost:8080/product/product/${id}`)
+    result = await result.json()
+    console.warn(result)
+
+    setProductName(result[0].name)
+    setImageUrl(result[0].imageURL)
+    setPrice(result[0].price)
+    setDescription(result[0].description)
+    setCategoryId(result[0].categoryId)
+  }
 
   const handleProductName = (e) => {
     setProductName(e.target.value)
@@ -33,16 +50,16 @@ function CreateProducts() {
 
   const handleApi = () => {
     axios
-      .post('http://localhost:8080/product/add', {
+      .post(`http://localhost:8080/product/update/${id}`, {
         name: productname,
         imageURL: imageurl,
         price: price,
         description: description,
-        categoryId: id,
+        categoryId: categoryId,
       })
       .then((res) => {
-        alert('product added successfully')
-        console.log(res.data)
+        alert(res.data.message)
+        console.log(res.data.message)
       })
       .catch((error) => {
         console.log(error)
@@ -50,8 +67,8 @@ function CreateProducts() {
   }
 
   return (
-    <>
-      <h1>Add products in selected category</h1>
+    <div>
+      <div>Update Products</div>
       Product Name:
       <input value={productname} onChange={handleProductName} type="text" />
       <br></br>
@@ -66,8 +83,8 @@ function CreateProducts() {
       <br></br>
       <button onClick={handleApi}>Register</button>
       <button onClick={() => navigate(-1)}>Go back</button>
-    </>
+    </div>
   )
 }
 
-export default CreateProducts
+export default UpdateProduct

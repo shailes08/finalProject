@@ -13,7 +13,11 @@ import AdminCategory from './components/AdminCategory'
 import AdminProducts from './components/AdminProducts'
 import CreateCategory from './components/CreateCategory'
 import CreateProducts from './components/CreateProducts'
+import UpdateProduct from './components/UpdateProduct'
 import Nomatch from './components/Nomatch'
+import AdminProductList from './components/AdminProductList'
+import AdminCategoryList from './components/AdminCategoryList'
+import UpdateCategory from './components/UpdateCategory'
 
 function App() {
   return (
@@ -35,7 +39,23 @@ function App() {
         path="/admin/products/addproducts/:id"
         element={<CreateProducts />}
       ></Route>
+      <Route
+        path="/admin/products/updateproducts/:id"
+        element={<UpdateProduct />}
+      ></Route>
+      <Route
+        path="/admin/product/productlist"
+        element={<AdminProductList />}
+      ></Route>
       <Route path="*" element={<Nomatch />}></Route>
+      <Route
+        path="/admin/category/categorylist"
+        element={<AdminCategoryList />}
+      ></Route>
+      <Route
+        path="/admin/category/updatecategory/:id"
+        element={<UpdateCategory />}
+      ></Route>
     </Routes>
   )
 }

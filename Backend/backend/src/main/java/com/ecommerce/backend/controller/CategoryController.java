@@ -1,6 +1,7 @@
 package com.ecommerce.backend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,12 @@ public class CategoryController {
 	public  List<Category> listCategory() {
 		return categoryService.listCategory();
 	}
+	
+	@GetMapping("/getcategory/{id}")
+	public Optional<Category> getCategory(@PathVariable("id") Integer id) {
+		return categoryService.getCategoryById(id);
+	}
+	
 	
 	@PostMapping("/update/{categoryId}")
 	public ResponseEntity<ApiResponse> updateCategory(@PathVariable("categoryId") int categoryId,@RequestBody Category category) {
