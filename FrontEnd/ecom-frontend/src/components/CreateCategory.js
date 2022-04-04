@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './CreateCategory.css'
+import Footer from './Footer'
 
 function CreateCategory() {
   const [categoryname, setCategoryName] = useState('')
@@ -37,17 +39,33 @@ function CreateCategory() {
   }
   return (
     <>
-      Category Name:
-      <input value={categoryname} onChange={handleCategoryName} type="text" />
-      <br></br>
-      Image URL:
-      <input value={imageurl} onChange={handleImageUrl} type="text" />
-      <br></br>
-      Description:
-      <input value={description} onChange={handleDescription} type="text" />
-      <br></br>
-      <button onClick={handleApi}>Add Category</button>
-      <button onClick={() => navigate(-1)}>Back</button>
+      <div className='BoxDiv'>
+        <div className='InnerBox'>
+          <div>
+            <div>
+              Category Name:
+              <br />
+              <input value={categoryname} onChange={handleCategoryName} type="text" className='InputBox' />
+            </div>
+            <br />
+            <div>
+              Image URL:
+              <br />
+              <input value={imageurl} onChange={handleImageUrl} type="text" className='InputBox' />
+            </div>
+            <br />
+            <div>
+              Description:
+              <br />
+              <input value={description} onChange={handleDescription} type="text" className='InputBox' />
+            </div>
+            <br />
+            <input type="button" value="Add Category" onClick={handleApi} className='CategoryButton' />
+            <input type="button" value="Back" onClick={() => navigate(-1)} className='BackButton' />
+          </div>
+        </div>
+      </div>
+      <Footer></Footer>
     </>
   )
 }

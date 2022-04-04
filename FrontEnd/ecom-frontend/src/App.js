@@ -18,6 +18,7 @@ import Nomatch from './components/Nomatch'
 import AdminProductList from './components/AdminProductList'
 import AdminCategoryList from './components/AdminCategoryList'
 import UpdateCategory from './components/UpdateCategory'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
@@ -56,7 +57,12 @@ function App() {
         path="/admin/category/updatecategory/:id"
         element={<UpdateCategory />}
       ></Route>
+      <Route
+        path="/ProductList"
+        element={<ProductList />}
+      ></Route>
     </Routes>
+
   )
 }
 

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Address.css'
+import Footer from './Footer'
 
 function Address() {
   const [address, setAddress] = useState('')
@@ -48,19 +50,38 @@ function Address() {
 
   return (
     <div>
-      Address:
-      <input value={address} onChange={handleAddress} type="text" />
-      <br></br>
-      City:
-      <input value={city} onChange={handleCity} type="text" />
-      <br></br>
-      State:
-      <input value={state} onChange={handleState} type="text" />
-      <br></br>
-      Pincode:
-      <input value={pincode} onChange={handlePincode} type="number" />
-      <br></br>
-      <button onClick={handleApi}>Add Address</button>
+      <div className='BoxDiv'>
+        <div className='InnerBox'>
+          <div>
+            <div>
+              Address:
+              <br />
+              <input value={address} onChange={handleAddress} type="text" className='InputBox' />
+            </div>
+            <br />
+            <div>
+              City:
+              <br />
+              <input value={city} onChange={handleCity} type="text" className='InputBox' />
+            </div>
+            <br />
+            <div>
+              State:
+              <br />
+              <input value={state} onChange={handleState} type="text" className='InputBox' />
+            </div>
+            <br />
+            <div>
+              Pincode:
+              <br />
+              <input value={pincode} onChange={handlePincode} type="text" className='InputBox' />
+            </div>
+            <br />
+            <input type="button" value="Add Address" onClick={handleApi} className="AddressButton" />
+          </div>
+        </div>
+      </div>
+      <Footer></Footer>
     </div>
   )
 }
